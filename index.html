@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho Secreto</title>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fce4ec; /* Rosa claro */
+            background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+        }
+
+        /* --- TELA DE LOGIN --- */
+        #login-screen {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: fadeIn 1s;
+        }
+
+        #login-screen h1 {
+            font-family: 'Georgia', serif;
+            color: #e91e63;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        #login-screen input {
+            padding: 10px;
+            border: 2px solid #f8bbd0;
+            border-radius: 5px;
+            width: 80%;
+            margin-bottom: 15px;
+            outline: none;
+            text-align: center;
+        }
+
+        #login-screen button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        #login-screen button:hover {
+            transform: scale(1.05);
+            background-color: #c2185b;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* --- ÁREA DO CASAL (OCULTA INICIALMENTE) --- */
+        #app-container {
+            display: none; /* Escondido até digitar a senha */
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1.5s;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-style: italic;
+            color: #fff;
+            margin-top: 5px;
+        }
+
+        /* --- GRID DE FOTOS E FRASES (AS LACUNAS) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            color: #e91e63;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* --- ANIMAÇÃO --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="login-screen">
+        <h1>Área Secreta 💘</h1>
+        <p>Digite a senha para entrar:</p>
+        <input type="password" id="senhaInput" placeholder="Senha...">
+        <br>
+        <button onclick="verificarSenha()">Entrar</button>
+        <p class="error-msg" id="erro">Senha incorreta! Tente novamente.</p>
+    </div>
+
+    <!-- CONTEÚDO DO SITE (APARECE APÓS LOGIN) -->
+    <div id="app-container">
+        <header>
+            <h1>Nossa História</h1>
+            <p>Um cantinho para guardar nossos melhores momentos.</p>
+        </header>
+
+        <div class="gallery-grid">
+            <!-- LACUNA 1 -->
+            <div class="card">
+                <img src="c:\Users\cleut\Documents\WhatsApp Image 2026-03-16 at 20.52.32.jpeg" alt="Foto 1">
+                <div class="card-content">
+                    <h3>Nosso Primeiro Encontro</h3>
+                    <p>"Aqui começou tudo. Um dia simples que mudou minha vida para sempre."</p>
+                </div>
+            </div>
+
+            <!-- LACUNA 2 -->
+            <div class="card">
+                <img src="c:\Users\cleut\Documents\WhatsApp Image 2026-03-15 at 22.51.59.jpeg" alt="Foto 2">
+                <div class="card-content">
+                    <h3>Aquele Viagem</h3>
+                    <p>"Momentos inesquecíveis ao seu lado. Cada viagem é uma nova aventura."</p>
+                </div>
+            </div>
+
+            <!-- LACUNA 3 -->
+            <div class="card">
+                <img src="c:\Users\cleut\Documents\WhatsApp Image 2026-03-15 at 22.49.58.jpeg" alt="Foto 3">
+                <div class="card-content">
+                    <h3>Risos e Bobagens</h3>
+                    <p>"Você é a pessoa com quem eu mais rio no mundo. Obrigado(a) por ser minha alegria."</p>
+                </div>
+            </div>
+
+            <!-- LACUNA 4 -->
+            <div class="card">
+                <img src="c:\Users\cleut\Documents\WhatsApp Image 2026-03-15 at 22.49.17.jpeg" alt="Foto 4">
+                <div class="card-content">
+                    <h3>Para Sempre</h3>
+                    <p>"Não importa o que venha, quero você do meu lado hoje e sempre."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- LÓGICA DA SENHA ---
+        
+        // DEFINA A SENHA AQUI
+        const senhaCorreta = "amor123"; 
+
+        function verificarSenha() {
+            const input = document.getElementById('senhaInput').value;
+            const erroMsg = document.getElementById('erro');
+            const loginScreen = document.getElementById('login-screen');
+            const appContainer = document.getElementById('app-container');
+
+            if (input === senhaCorreta) {
+                // Se a senha estiver certa, esconde o login e mostra o site
+                loginScreen.style.display = 'none';
+                appContainer.style.display = 'block';
+            } else {
+                // Mostra mensagem de erro
+                erroMsg.style.display = 'block';
+                document.getElementById('senhaInput').style.borderColor = 'red';
+            }
+        }
+
+        // Permitir apertar ENTER para logar
+        document.getElementById("senhaInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verificarSenha();
+            }
+        });
+    </script>
+</body>
+</html>
